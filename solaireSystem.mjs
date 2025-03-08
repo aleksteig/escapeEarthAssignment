@@ -126,12 +126,8 @@ async function interactionWithAPI(endpoint, method, body = null) {
 
 async function mainTask6() {
     try {
-        const data = await interactionWithAPI(`/bodies`, 'GET');
-        const jupiterMoons = data.bodies.filter(body =>
-            body.aroundPlanet && body.aroundPlanet.planet === "jupiter"
-        );
-        let amountOfMoons = jupiterMoons.length;
-        console.log(amountOfMoons)
+        const data = await interactionWithAPI(`/bodies/pluto`, 'GET');
+        console.log(data.bodyType);
     } catch (error) {
         console.error("Error fetching data:", error);
     }
