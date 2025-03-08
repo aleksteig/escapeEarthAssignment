@@ -15,6 +15,7 @@ const answer1 = 696342 - 695508;
 const answer2 = 'mars';
 const answer3 = 'jupiter';
 const answer4 = 95;
+const answer5 = 'Ganymede'
 const playerID = 'aleksandte@uia.no';
 
 console.log(await interactionWithAPI(`start/?player=${playerID}`, 'GET'))
@@ -46,3 +47,10 @@ const respondAnswer4 = await interactionWithAPI(`answer`, 'POST', {
 });
 
 console.log(respondAnswer4);
+
+const respondAnswer5 = await interactionWithAPI(`answer`, 'POST', {
+    answer: answer5,
+    player: playerID,
+});
+
+console.log(respondAnswer5);

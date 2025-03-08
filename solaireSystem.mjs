@@ -81,7 +81,50 @@ async function interactionWithAPI(endpoint, method, body = null) {
 // mainTask3();
 
 
-async function mainTask4() {
+// async function mainTask4() {
+//     try {
+//         const data = await interactionWithAPI(`/bodies`, 'GET');
+//         const jupiterMoons = data.bodies.filter(body =>
+//             body.aroundPlanet && body.aroundPlanet.planet === "jupiter"
+//         );
+//         let amountOfMoons = jupiterMoons.length;
+//         console.log(amountOfMoons)
+//     } catch (error) {
+//         console.error("Error fetching data:", error);
+//     }
+// }
+
+// mainTask4();
+
+// async function mainTask5() {
+//     try {
+//         const data = await interactionWithAPI(`/bodies`, 'GET');
+//         let meanRadiusIndexPosition = 15;
+//         let moonNameIndexPosition = 1;
+//         const jupiterMoons = data.bodies.filter(body =>
+//             body.aroundPlanet && body.aroundPlanet.planet === "jupiter"
+//         );
+//         let currentBiggestMoon = "";
+//         let currentBiggestMoonSize = 0;
+//         for(let i = 0; i < jupiterMoons.length; i++){
+//             if(Object.values(jupiterMoons[i])[meanRadiusIndexPosition] > currentBiggestMoonSize){
+//                 currentBiggestMoon = Object.values(jupiterMoons[i])[moonNameIndexPosition]
+//                 currentBiggestMoonSize = Object.values(jupiterMoons[i])[meanRadiusIndexPosition]
+//             }
+//             // console.log(Object.values(jupiterMoons[i])[meanRadiusIndexPosition])
+//         }
+//         // console.log(Object.values(jupiterMoons))
+//         console.log(currentBiggestMoon)
+//         console.log(currentBiggestMoonSize)
+
+//     } catch (error) {
+//         console.error("Error fetching data:", error);
+//     }
+// }
+
+// mainTask5();
+
+async function mainTask6() {
     try {
         const data = await interactionWithAPI(`/bodies`, 'GET');
         const jupiterMoons = data.bodies.filter(body =>
@@ -94,20 +137,4 @@ async function mainTask4() {
     }
 }
 
-mainTask4();
-
-async function mainTask5() {
-    try {
-        const data = await interactionWithAPI(`/bodies`, 'GET');
-        const jupiterMoons = data.bodies.filter(body =>
-            body.aroundPlanet && body.aroundPlanet.planet === "jupiter"
-        );
-
-        
-
-    } catch (error) {
-        console.error("Error fetching data:", error);
-    }
-}
-
-mainTask5();
+mainTask6();
