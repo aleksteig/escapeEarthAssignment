@@ -11,10 +11,10 @@ async function interactionWithAPI(endpoint, method, body = null){
     return await response.json();
 }
 
-const answer1 = 689130
+const answer1 = 696342 - 695508;
 const playerID = 'aleksandte@uia.no'
 
-// console.log(await interactionWithAPI(`start/?player=${playerID}`, 'GET'))
+console.log(await interactionWithAPI(`start/?player=${playerID}`, 'GET'))
 
 const respondAnswer1 = await interactionWithAPI(`answer`, 'POST', {
     answer: answer1,
