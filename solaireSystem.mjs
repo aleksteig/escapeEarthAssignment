@@ -29,14 +29,53 @@ async function interactionWithAPI(endpoint, method, body = null) {
 
 // mainTask1();
 
-async function mainTask2() {
+// async function mainTask2() {
+//     try {
+//         const data = await interactionWithAPI(`/bodies?data=id,axialTilt`, 'GET');
+//         //console.log(data)
+//         let dataValues = Object.values(data);
+//         let finalDataValues = dataValues[0];
+//         let currentClosestAxialTiltToEarth = "";
+//         let earthAxialTilt = 23.4393;
+//         let currentDiffOfAxialTilt = 23.4393;
+//         for(let i = 0; i < finalDataValues.length; i++){
+//             if(Object.values(finalDataValues[i])[0] != 'terre'){
+//                 if(Math.abs(earthAxialTilt - Object.values(finalDataValues[i])[1]) < currentDiffOfAxialTilt){
+//                     currentDiffOfAxialTilt = Math.abs(earthAxialTilt - Object.values(finalDataValues[i])[1]);
+//                     currentClosestAxialTiltToEarth = Object.values(finalDataValues[i])[0];
+//                 };
+//             }
+            
+//             //console.log(Object.values(finalDataValues[i])[1])
+//         }
+//         console.log(currentClosestAxialTiltToEarth);
+        
+//     } catch (error) {
+//         console.error("Error fetching data:", error);
+//     }
+// }
+
+// mainTask2();
+
+async function mainTask3() {
     try {
-        // const data = await interactionWithAPI(`/bodies?filter[]=id,axialTilt,eq,earth`, 'GET');
-        const data = await interactionWithAPI(`/bodies?filter[]=id,terre,axialTilt`, 'GET');
-        console.log(data);
+        const data = await interactionWithAPI(`/bodies?data=id,sideralRotation`, 'GET');
+        let dataValues = Object.values(data);
+        let finalDataValues = dataValues[0];
+        let currentFastestSideralRotationPlanet = "";
+        let currentPlanetSideralRotationSpeed = 24;
+        for(let i = 0; i < finalDataValues.length; i++){
+            if(Object.values(finalDataValues[i])[1] != 0){
+                if(currentPlanetSideralRotationSpeed > Math.abs(Object.values(finalDataValues[i])[1])){
+                    currentPlanetSideralRotationSpeed = Object.values(finalDataValues[i])[1]
+                    currentFastestSideralRotationPlanet = Object.values(finalDataValues[i])[0]
+                };
+            }
+        }
+        console.log(currentFastestSideralRotationPlanet);
     } catch (error) {
         console.error("Error fetching data:", error);
     }
 }
 
-mainTask2();
+mainTask3();
