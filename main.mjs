@@ -13,6 +13,7 @@ async function interactionWithAPI(endpoint, method, body = null){
 
 const answer1 = 696342 - 695508;
 const answer2 = 'mars'
+const answer3 = 'jupiter'
 const playerID = 'aleksandte@uia.no'
 
 console.log(await interactionWithAPI(`start/?player=${playerID}`, 'GET'))
@@ -22,7 +23,7 @@ const respondAnswer1 = await interactionWithAPI(`answer`, 'POST', {
     player: playerID,
 });
 
-// console.log(respondAnswer1);
+console.log(respondAnswer1);
 
 const respondAnswer2 = await interactionWithAPI(`answer`, 'POST', {
     answer: answer2,
@@ -30,3 +31,10 @@ const respondAnswer2 = await interactionWithAPI(`answer`, 'POST', {
 });
 
 console.log(respondAnswer2);
+
+const respondAnswer3 = await interactionWithAPI(`answer`, 'POST', {
+    answer: answer3,
+    player: playerID,
+});
+
+console.log(respondAnswer3);

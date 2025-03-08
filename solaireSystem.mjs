@@ -59,15 +59,15 @@ async function interactionWithAPI(endpoint, method, body = null) {
 
 async function mainTask3() {
     try {
-        const data = await interactionWithAPI(`/bodies?data=id,sideralRotation`, 'GET');
+        const data = await interactionWithAPI(`/bodies?data=id,sideralRotation,isPlanet`, 'GET');
         let dataValues = Object.values(data);
         let finalDataValues = dataValues[0];
         let currentFastestSideralRotationPlanet = "";
         let currentPlanetSideralRotationSpeed = 24;
         for(let i = 0; i < finalDataValues.length; i++){
-            if(Object.values(finalDataValues[i])[1] != 0){
-                if(currentPlanetSideralRotationSpeed > Math.abs(Object.values(finalDataValues[i])[1])){
-                    currentPlanetSideralRotationSpeed = Object.values(finalDataValues[i])[1]
+            if(Object.values(finalDataValues[i])[2] != 0 && Object.values(finalDataValues[i])[1] == true){
+                if(currentPlanetSideralRotationSpeed > Math.abs(Object.values(finalDataValues[i])[2])){
+                    currentPlanetSideralRotationSpeed = Math.abs(Object.values(finalDataValues[i])[2])
                     currentFastestSideralRotationPlanet = Object.values(finalDataValues[i])[0]
                 };
             }
