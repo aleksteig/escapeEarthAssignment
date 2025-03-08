@@ -57,25 +57,57 @@ async function interactionWithAPI(endpoint, method, body = null) {
 
 // mainTask2();
 
-async function mainTask3() {
+// async function mainTask3() {
+//     try {
+//         const data = await interactionWithAPI(`/bodies?data=id,sideralRotation,isPlanet`, 'GET');
+//         let dataValues = Object.values(data);
+//         let finalDataValues = dataValues[0];
+//         let currentFastestSideralRotationPlanet = "";
+//         let currentPlanetSideralRotationSpeed = 24;
+//         for(let i = 0; i < finalDataValues.length; i++){
+//             if(Object.values(finalDataValues[i])[2] != 0 && Object.values(finalDataValues[i])[1] == true){
+//                 if(currentPlanetSideralRotationSpeed > Math.abs(Object.values(finalDataValues[i])[2])){
+//                     currentPlanetSideralRotationSpeed = Math.abs(Object.values(finalDataValues[i])[2])
+//                     currentFastestSideralRotationPlanet = Object.values(finalDataValues[i])[0]
+//                 };
+//             }
+//         }
+//         console.log(currentFastestSideralRotationPlanet);
+//     } catch (error) {
+//         console.error("Error fetching data:", error);
+//     }
+// }
+
+// mainTask3();
+
+
+async function mainTask4() {
     try {
-        const data = await interactionWithAPI(`/bodies?data=id,sideralRotation,isPlanet`, 'GET');
-        let dataValues = Object.values(data);
-        let finalDataValues = dataValues[0];
-        let currentFastestSideralRotationPlanet = "";
-        let currentPlanetSideralRotationSpeed = 24;
-        for(let i = 0; i < finalDataValues.length; i++){
-            if(Object.values(finalDataValues[i])[2] != 0 && Object.values(finalDataValues[i])[1] == true){
-                if(currentPlanetSideralRotationSpeed > Math.abs(Object.values(finalDataValues[i])[2])){
-                    currentPlanetSideralRotationSpeed = Math.abs(Object.values(finalDataValues[i])[2])
-                    currentFastestSideralRotationPlanet = Object.values(finalDataValues[i])[0]
-                };
-            }
-        }
-        console.log(currentFastestSideralRotationPlanet);
+        const data = await interactionWithAPI(`/bodies`, 'GET');
+        const jupiterMoons = data.bodies.filter(body =>
+            body.aroundPlanet && body.aroundPlanet.planet === "jupiter"
+        );
+        let amountOfMoons = jupiterMoons.length;
+        console.log(amountOfMoons)
     } catch (error) {
         console.error("Error fetching data:", error);
     }
 }
 
-mainTask3();
+mainTask4();
+
+async function mainTask5() {
+    try {
+        const data = await interactionWithAPI(`/bodies`, 'GET');
+        const jupiterMoons = data.bodies.filter(body =>
+            body.aroundPlanet && body.aroundPlanet.planet === "jupiter"
+        );
+
+        
+
+    } catch (error) {
+        console.error("Error fetching data:", error);
+    }
+}
+
+mainTask5();
